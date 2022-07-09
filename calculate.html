@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #ecf0f3;
+    font-family: sans-serif;
+    outline: none;
+}
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calculator{
+    background-color: #ecf0f3;
+    padding: 15px;
+    border-radius: 30px;
+    box-shadow: inset 5px 5px 12px white,
+                   5px 5px 12px rgba(0, 0, 0, .16); 
+    display: grid;  
+    grid-template-columns: repeat(4, 68px);
+}
+#input{
+    grid-column: span 4;
+    height: 70px;
+    width: 260px;
+    background-color: #ecf0f3;
+    box-shadow: inset -5px -5px 12px #ffffff,
+                inset 5px 5px 12px rgba(0, 0, 0, .16);
+    border: none;
+    border-radius: 30px;
+    color: grey;
+    font-size: 50px;
+    text-align: end;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+button{
+    height: 48px;
+    width: 48px;
+    box-shadow: -5px -5px 12px #ffffff,
+                5px 5px 12px rgba(0, 0, 0, .16);
+    border: none;
+    border-radius: 50%;
+    margin: 8px;
+    font-size: 16px;
+
+}
+#ans{
+    width: 115px;
+    border-radius: 40px;
+}
+    </style>
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <input type="text" id="input" placeholder="0">
+            <button id="clr" onclick="Clear()">Cl</button>
+            <button id="del" onclick="del()">DEL</button>
+            <button id="percent" onclick="display('%')">%</button>
+            <button id="divide" onclick="display('/')">/</button>
+            <button id="block7" onclick="display('7')">7</button>
+            <button id="block8" onclick="display('8')">8</button>
+            <button id="block9" onclick="display('9')">9</button>
+            <button id="multiply" onclick="display('*')">*</button>
+            <button id="block4" onclick="display('4')">4</button>
+            <button id="block5" onclick="display('5')">5</button>
+            <button id="block6" onclick="display('6')">6</button>
+            <button id="minus" onclick="display('-')">-</button>
+            <button id="block1" onclick="display('1')">1</button>
+            <button id="block2" onclick="display('2')">2</button>
+            <button id="block3" onclick="display('3')">3</button>
+            <button id="plus" onclick="display('+')">+</button>
+            <button id="dot" onclick="display('.')">.</button>
+            <button id="block0" onclick="display('0')">0</button>
+            <button id="ans" onclick="Calculate()">=</button>
+        </div>
+    </div>
+    <script>
+        let outputScreen = document.getElementById("input");
+
+function display(num){
+    outputScreen.value +=num;  
+}
+function Calculate(){
+    try{
+        outputScreen.value = eval(outputScreen.value);
+    }
+    catch(err){
+        alert("Invalid");
+    }
+}
+function Clear(){
+    outputScreen.value ="";
+}
+function del(){
+    outputScreen.value = outputScreen.value.slice(0,-1);
+}
+
+    </script>
+</body>
+</html>
